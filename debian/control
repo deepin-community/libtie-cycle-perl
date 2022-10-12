@@ -1,0 +1,35 @@
+Source: libtie-cycle-perl
+Maintainer: Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>
+Uploaders: gregor herrmann <gregoa@debian.org>
+Section: perl
+Testsuite: autopkgtest-pkg-perl
+Priority: optional
+Build-Depends: debhelper-compat (= 13)
+Build-Depends-Indep: libtest-pod-coverage-perl <!nocheck>,
+                     libtest-pod-perl <!nocheck>,
+                     perl
+Standards-Version: 4.5.1
+Vcs-Browser: https://salsa.debian.org/perl-team/modules/packages/libtie-cycle-perl
+Vcs-Git: https://salsa.debian.org/perl-team/modules/packages/libtie-cycle-perl.git
+Homepage: https://metacpan.org/release/Tie-Cycle
+Rules-Requires-Root: no
+
+Package: libtie-cycle-perl
+Architecture: all
+Depends: ${misc:Depends},
+         ${perl:Depends}
+Description: module for cycling through a list of values via a scalar
+ You use Tie::Cycle to go through a list over and over again. Once you get to
+ the end of the list, you go back to the beginning. You don't have to worry
+ about any of this since the magic of tie does that for you.
+ .
+ The tie takes an array reference as its third argument. The tie should
+ succeed unless the argument is not an array reference. Previous versions
+ required you to use an array that had more than one element (what's the
+ pointing of looping otherwise?), but I've removed that restriction since the
+ number of elements you want to use may change depending on the situation.
+ .
+ During the tie, this module makes a shallow copy of the array reference. If
+ the array reference contains references, and those references are changed
+ after the tie, the elements of the cycle will change as well. See the
+ included test.pl script for an example of this effect.
